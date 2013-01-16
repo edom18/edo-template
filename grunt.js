@@ -148,8 +148,8 @@ module.exports = function(grunt) {
         var exec = require('child_process').exec,
 
             done = this.async(),
-            namespace    = 'GochiPhoto.App',
-            outputFile   = 'GochiPhoto.min.js',
+            namespace    = 'Hoge.App',
+            outputFile   = 'Hoge.min.js',
             compiler_jar = '/Applications/gcc/compiler.jar',
 
             //To create command.
