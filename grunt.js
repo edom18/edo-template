@@ -115,6 +115,72 @@ module.exports = function(grunt) {
     });
   });
 
+
+    //Register Depth building task.
+    grunt.registerTask('deps', function () {
+
+        console.log('Start depth building...');
+
+        var exec = require('child_process').exec,
+
+            done = this.async(),
+            command = 'python closure-library/closure/bin/build/depswriter.py --root_with_prefix="js ../../../js" --output_file=deps.js',
+            callback = function (err, stdout, stderr) {
+                if (err) {
+                    console.log(stderr);
+                    done(false);
+                }
+                else {
+                    console.log(stdout);
+                    console.log('End of building.');
+                    done();
+                }
+            };
+
+        exec(command, callback);
+    });
+
+    //Register Building task.
+    grunt.registerTask('build', function () {
+
+        console.log('Start building...');
+
+        var exec = require('child_process').exec,
+
+            done = this.async(),
+            namespace    = 'GochiPhoto.App',
+            outputFile   = 'GochiPhoto.min.js',
+            compiler_jar = '/Applications/gcc/compiler.jar',
+
+            //To create command.
+            command = [
+                'python closure-library/closure/bin/build/closurebuilder.py ',
+                '--root=./js ',
+                '--root=./closure-library ',
+                '--namespace="', namespace, '" ',
+                '--output_mode=compiled ',
+                '--output_file=', outputFile, ' ',
+                '--compiler_jar=', compiler_jar, ' ',
+                '-f "--define=goog.DEBUG=false"'
+            ].join(''),
+
+            //Define the callback function.
+            callback = function (err, stdout, stderr) {
+                if (err) {
+                    console.log(stderr);
+                    done(false);
+                }
+                else {
+                    console.log(stdout);
+                    console.log('End of building.');
+                    done();
+                }
+            };
+
+        //Exec command.
+        exec(command, callback);
+    });
+
   // load Tasks
   grunt.loadNpmTasks('node-build-script');
   grunt.loadNpmTasks('grunt-compass');
