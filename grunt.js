@@ -93,8 +93,18 @@ module.exports = function(grunt) {
         }
     },
     watch: {
-      files: ['js/*.js', 'sass/*.scss'],
-      tasks: 'default'
+      sass: {
+        files: ['sass/*.scss'],
+        tasks: 'compass:dev'
+      },
+      js: {
+        files: ['js/*.js'],
+        tasks: 'lint'
+      },
+      all: {
+        files: ['js/*.js', 'sass/*.scss'],
+        tasks: 'defalut'
+      }
     }
   });
 
