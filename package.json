@@ -3,7 +3,7 @@
   "name": "my-hbp5",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-coffee": "latest",
+    "grunt-contrib-coffee": "latest",
     "grunt-compass": ">=0.3.7",
     "grunt-growl": ">=0.1.3",
     "node-build-script": "http://github.com/h5bp/node-build-script/tarball/master",

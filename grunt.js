@@ -140,6 +140,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('node-build-script');
   grunt.loadNpmTasks('grunt-compass');
   grunt.loadNpmTasks('grunt-growl');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
 
   // regist
   grunt.registerTask('deploy', 'deploy-copy');
